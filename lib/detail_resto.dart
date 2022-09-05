@@ -82,33 +82,7 @@ class DetailRestaurant extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   const Divider(color: Colors.grey),
-                  GridView.builder(
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      gridDelegate:
-                          const SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: 200,
-                        crossAxisSpacing: 10,
-                      ),
-                      itemCount: restaurant.menus.foods.length,
-                      itemBuilder: (BuildContext context, index) {
-                        return Card(
-                          child: Column(
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Center(
-                                  child: Text(
-                                    restaurant.menus.foods[index].name,
-                                    style:
-                                        Theme.of(context).textTheme.subtitle1,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      }),
+                  FoodGridView(restaurants: restaurant),
                   const Divider(color: Colors.grey),
                   Text(
                     'Drinks',
@@ -116,33 +90,7 @@ class DetailRestaurant extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   const Divider(color: Colors.grey),
-                  GridView.builder(
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      gridDelegate:
-                          const SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: 200,
-                        crossAxisSpacing: 10,
-                      ),
-                      itemCount: restaurant.menus.drinks.length,
-                      itemBuilder: (BuildContext context, index) {
-                        return Card(
-                          child: Column(
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Center(
-                                  child: Text(
-                                    restaurant.menus.drinks[index].name,
-                                    style:
-                                        Theme.of(context).textTheme.subtitle1,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      }),
+                  DrinkGridView(restaurants: restaurant),
                 ],
               ),
             ),
@@ -150,5 +98,75 @@ class DetailRestaurant extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class FoodGridView extends StatelessWidget {
+  final Restaurant restaurants;
+  const FoodGridView({Key? key, required this.restaurants}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+        primary: false,
+        shrinkWrap: true,
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 150,
+          crossAxisSpacing: 30,
+          mainAxisSpacing: 10,
+        ),
+        itemCount: restaurants.menus.foods.length,
+        itemBuilder: (BuildContext context, index) {
+          return Card(
+            child: Column(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Center(
+                    child: Text(
+                      restaurants.menus.foods[index].name,
+                      style: Theme.of(context).textTheme.subtitle1,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
+  }
+}
+
+class DrinkGridView extends StatelessWidget {
+  final Restaurant restaurants;
+  const DrinkGridView({Key? key, required this.restaurants}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+        primary: false,
+        shrinkWrap: true,
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 150,
+          crossAxisSpacing: 30,
+          mainAxisSpacing: 10,
+        ),
+        itemCount: restaurants.menus.drinks.length,
+        itemBuilder: (BuildContext context, index) {
+          return Card(
+            child: Column(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Center(
+                    child: Text(
+                      restaurants.menus.drinks[index].name,
+                      style: Theme.of(context).textTheme.subtitle1,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
   }
 }
