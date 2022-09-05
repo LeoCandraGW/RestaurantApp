@@ -53,7 +53,7 @@ class DetailRestaurant extends StatelessWidget {
                               ],
                             ),
                           ),
-                         Expanded(
+                          Expanded(
                             child: Row(
                               children: <Widget>[
                                 const Icon(
@@ -83,6 +83,7 @@ class DetailRestaurant extends StatelessWidget {
                   ),
                   const Divider(color: Colors.grey),
                   GridView.builder(
+                      scrollDirection: Axis.vertical,
                       shrinkWrap: true,
                       gridDelegate:
                           const SliverGridDelegateWithMaxCrossAxisExtent(
@@ -116,7 +117,7 @@ class DetailRestaurant extends StatelessWidget {
                   ),
                   const Divider(color: Colors.grey),
                   GridView.builder(
-                      // scrollDirection: Axis.horizontal,
+                      scrollDirection: Axis.vertical,
                       shrinkWrap: true,
                       gridDelegate:
                           const SliverGridDelegateWithMaxCrossAxisExtent(
