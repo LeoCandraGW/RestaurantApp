@@ -71,9 +71,7 @@ class DetailRestaurant extends StatelessWidget {
                   const Divider(color: Colors.grey),
                   Text(
                     restaurant.description,
-                    style: Theme.of(context).textTheme.bodyText2,
-                    maxLines: 4,
-                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.justify,
                   ),
                   const Divider(color: Colors.grey),
                   Text(
@@ -126,6 +124,7 @@ class FoodGridView extends StatelessWidget {
                     child: Text(
                       restaurants.menus.foods[index].name,
                       style: Theme.of(context).textTheme.subtitle1,
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),
@@ -161,6 +160,7 @@ class DrinkGridView extends StatelessWidget {
                     child: Text(
                       restaurants.menus.drinks[index].name,
                       style: Theme.of(context).textTheme.subtitle1,
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),
